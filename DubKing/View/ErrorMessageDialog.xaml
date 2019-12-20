@@ -1,0 +1,29 @@
+﻿<Window x:Class="DubKing.View.ErrorMessageDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View"
+        mc:Ignorable="d"
+        Title="ErrorMessageDialog"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        Topmost="True"
+        WindowStartupLocation="CenterScreen" BorderBrush="Red" BorderThickness="2">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Title" HorizontalContentAlignment="Center" Margin="15 0 15 0"
+               Content="{Binding DialogTitle}" FontSize="24" FontWeight="Bold" />
+        <TextBlock x:Name="Message" Grid.Row="1" TextWrapping="Wrap" Width="320" TextAlignment="Center" Margin="30"
+                   Text="{Binding MessageText}" />
+        <Button x:Name="MessageButton"
+                Click="MessageButton_Click" Content="{Binding ButtonText}" Grid.Row="2" Height="32" Width="120" HorizontalAlignment="Right" Margin="15"
+                IsDefault="True"
+                IsCancel="True" />
+    </Grid>
+</Window>

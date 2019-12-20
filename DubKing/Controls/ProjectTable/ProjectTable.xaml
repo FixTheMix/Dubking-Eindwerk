@@ -1,0 +1,217 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.ProjectTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800"
+             x:Name="ProjectTableControl">
+    <Grid Margin="0 0 17 17" x:Name="MainTableGrid" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="268"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="84"/>
+            <RowDefinition x:Name="rowOne"/>
+        </Grid.RowDefinitions>
+        <Border Height="60"
+                Background="LightGray"
+                VerticalAlignment="Bottom">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="1"
+                           Text="Character Name"
+                           Foreground="White"></TextBlock>
+                <TextBlock Grid.Column="1"
+                           Grid.Row="1"
+                           Text="Actor Name"
+                           TextAlignment="Right"
+                           Foreground="White"></TextBlock>
+                <TextBlock Grid.Column="2"
+                           Grid.Row="0"
+                           Text="Total"
+                           Grid.RowSpan="2"
+                           FontSize="16"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Center"
+                           Foreground="White" />
+            </Grid>
+        </Border>
+        <ListBox Grid.Column="0"
+                 Grid.Row="1"
+                 ItemsSource="{Binding FilteredTableRows}"
+                 HorizontalContentAlignment="Stretch"
+                 x:Name="HeaderListBox"
+                 ScrollViewer.ScrollChanged="BodyScroll_ScrollChanged"
+                 Width="268"
+                 
+                 ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                 ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+                 VirtualizingPanel.IsVirtualizing="True"
+                 VirtualizingPanel.VirtualizationMode="Recycling"
+                 VirtualizingPanel.CacheLength="2"
+                 VirtualizingPanel.CacheLengthUnit="Page"
+                 VirtualizingPanel.ScrollUnit="Pixel">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:RowHeaderControl x:Name="RowHeader"
+                                            Height="60"
+                                            Margin="0 1"
+                                            Width="260"
+                                            OpenEditCharacter="{Binding ElementName=HeaderListBox, Path=DataContext.OpenEditCharacter}"
+                                            OpenSelectActor="{Binding ElementName=HeaderListBox, Path=DataContext.OpenSelectActor}"
+                                            ProjectTableDataContext="{Binding ElementName=HeaderListBox, Path=DataContext}"
+                                            />
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding TotalLineCount}"
+                                     Value="0">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                        
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding"
+                            Value="0" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ListBox>
+        <ScrollViewer x:Name="headerScroll"
+                      Grid.Row="0"
+                      Grid.Column="1"
+                      Margin="1 0 0 0"
+                      VerticalScrollBarVisibility="Hidden" 
+                      HorizontalScrollBarVisibility="Hidden">
+        <ItemsControl 
+                 x:Name="columheaderListbox"
+                 
+                 ItemsSource="{Binding Episodes}"
+                 
+                 Height="84"
+                 
+                 >
+            <!--VirtualizingPanel.IsVirtualizing="True"
+                 VirtualizingPanel.VirtualizationMode="Recycling"-->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ColumnHeaderControl ProjectTableDataContext="{Binding ElementName=ProjectTableControl, Path=DataContext}" />
+                    <DataTemplate.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding EpStatus, Converter={StaticResource EnumToInt}}"
+                                           Value="0" />
+                                <Condition Binding="{Binding ElementName=ProjectTableControl, Path=DataContext.HideRecording }"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Visibility"
+                                        Value="Collapsed" />
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding EpStatus, Converter={StaticResource EnumToInt}}"
+                                           Value="1" />
+                                <Condition Binding="{Binding ElementName=ProjectTableControl, Path=DataContext.HideMixing}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Visibility"
+                                        Value="Collapsed" />
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding EpStatus, Converter={StaticResource EnumToInt}}"
+                                           Value="2" />
+                                <Condition Binding="{Binding ElementName=ProjectTableControl, Path=DataContext.HideMastering}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Visibility"
+                                        Value="Collapsed" />
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding EpStatus, Converter={StaticResource EnumToInt}}"
+                                           Value="3" />
+                                <Condition Binding="{Binding ElementName=ProjectTableControl, Path=DataContext.HideDelivering}"
+                                           Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter Property="Visibility"
+                                        Value="Collapsed" />
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <!--<ItemsControl.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding"
+                            Value="0" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>-->
+        </ItemsControl>
+        </ScrollViewer>
+        <ListBox Grid.Column="1"
+                 Grid.Row="1"
+                 x:Name="tableBody"
+                 Margin="0 0 -18 -18"
+                 ItemsSource="{Binding FilteredTableRows}"
+                 HorizontalContentAlignment="Stretch"
+
+                 VirtualizingPanel.IsVirtualizing="True"
+                 VirtualizingPanel.VirtualizationMode="Recycling"
+                 VirtualizingPanel.CacheLength="2"
+                 VirtualizingPanel.CacheLengthUnit="Page"
+                 VirtualizingPanel.ScrollUnit="Pixel"
+                 ScrollViewer.VerticalScrollBarVisibility="Visible"
+                 ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                 ScrollViewer.ScrollChanged="BodyScroll_ScrollChanged">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ProjectTableRowControl ProjectTableDataContext="{Binding ElementName=ProjectTableControl, Path=DataContext}">
+
+                    </local:ProjectTableRowControl>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding TotalLineCount}"
+                                     Value="0">
+                            <Setter Property="Visibility"
+                                    Value="Collapsed" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding"
+                            Value="0" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            
+        </ListBox>
+    </Grid>
+</UserControl>

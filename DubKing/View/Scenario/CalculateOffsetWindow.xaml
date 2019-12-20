@@ -1,0 +1,54 @@
+﻿<Window x:Class="DubKing.View.Scenario.CalculateOffsetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View.Scenario"
+        mc:Ignorable="d"
+        Title="CalculateOffsetWindow"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Topmost="True"
+        WindowStyle="None"
+        BorderBrush="Blue"
+        BorderThickness="2"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Scenario}">
+    <Grid>
+        <Button Content="X"
+                Width="24"
+                Height="24" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Click="OnClickCloseBtn"
+                Background="White"
+                BorderThickness="0" />
+        <StackPanel HorizontalAlignment="Center" Margin="12">
+        <StackPanel.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="HorizontalAlignment"
+                        Value="Center" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin"
+                        Value="4" />
+                <Setter Property="Height"
+                        Value="32" />
+            </Style>
+        </StackPanel.Resources>
+        <Label Content="Calulate Offset:" FontSize="24" FontWeight="Bold" />
+        <Label Content="Current Timecode:" />
+        <TextBox IsReadOnly="True" Text="{Binding SelectedLine.Timecode, Converter={StaticResource TimecodeToString}}"/>
+        <Label Content="Destination Timecode:" />
+        <TextBox  Text="{Binding DestinationTimecode, UpdateSourceTrigger=PropertyChanged}"/>
+        <Label Content="Offset:" />
+        <TextBox  IsReadOnly="True" Text="{Binding OffsetTimeCode}"/>
+        <Button Content="Set Offset" Height="32" Margin="4 32 4 4" Command="{Binding SetCalculation}"/>
+    </StackPanel>
+    </Grid>
+</Window>

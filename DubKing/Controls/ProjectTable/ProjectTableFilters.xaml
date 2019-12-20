@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.ProjectTableFilters"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable"
+             mc:Ignorable="d"
+             >
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    x:Name="FilterStack">
+            <local:SearchTableRow></local:SearchTableRow>
+            <local:TableColumnFilter Title="Hide Recording"
+                                     Margin="10"
+                                     IsSelected="{Binding ElementName=FilterStack, Path=DataContext.HideRecording, Mode=TwoWay}"
+                                     FilterCommand="{Binding ElementName=FilterStack, Path=DataContext.ColumnFilter}"/>
+            <local:TableColumnFilter Title="Hide Mixing" 
+                                     Margin="10"
+                                     IsSelected="{Binding ElementName=FilterStack, Path=DataContext.HideMixing, Mode=TwoWay}"
+                                     FilterCommand="{Binding ElementName=FilterStack, Path=DataContext.ColumnFilter}"/>
+            <local:TableColumnFilter Title="Hide Mastering" Margin="10"
+                                     IsSelected="{Binding ElementName=FilterStack, Path=DataContext.HideMastering, Mode=TwoWay}"
+                                     FilterCommand="{Binding ElementName=FilterStack, Path=DataContext.ColumnFilter}"/>
+            <local:TableColumnFilter Title="Hide Delivering"
+                                     Margin="10"
+                                     IsSelected="{Binding ElementName=FilterStack, Path=DataContext.HideDelivering, Mode=TwoWay}"
+                                     FilterCommand="{Binding ElementName=FilterStack, Path=DataContext.ColumnFilter}"/>
+            <local:ProjectTableDisplayControl Margin="10"></local:ProjectTableDisplayControl>
+            <local:ProjectTableSortingContol Margin="10" />
+        </StackPanel>
+    </Grid>
+</UserControl>

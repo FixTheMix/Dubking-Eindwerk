@@ -1,0 +1,90 @@
+﻿<helpers:UserControlProjectDependendcy xmlns:helpers="clr-namespace:DubKing.Helpers"
+                                       x:Class="DubKing.View.ProjectDetails"
+                                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                       xmlns:local="clr-namespace:DubKing.View"
+                                       xmlns:controls="clr-namespace:DubKing.Controls"
+                                       xmlns:table="clr-namespace:DubKing.Controls.ProjectTable"
+                                       xmlns:model="clr-namespace:DubKing.Model;assembly=DubKing.Model"
+                                       mc:Ignorable="d"
+                                       d:DesignHeight="450"
+                                       d:DesignWidth="800"
+                                       DataContext="{Binding ProjectDetails, Source={StaticResource Locator}}"
+                                       Project="{Binding Object, Mode=OneWayToSource}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border BorderThickness="2 0 2 2"
+                BorderBrush="Black">
+            <Grid>
+                <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin"
+                                    Value="10 0" />
+                            <Setter Property="FontSize"
+                                    Value="16" />
+                            <Setter Property="FontWeight"
+                                    Value="Bold" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock Text="{Binding Object.Customer}"></TextBlock>
+                    <TextBlock Text="-"></TextBlock>
+                    <TextBlock Text="{Binding Object.Title}" />
+                </StackPanel>
+                <ContentControl Template="{StaticResource Icons.Lock}"
+                                Height="24"
+                                Width="24"
+                                HorizontalAlignment="Right"
+                                Margin="10 0 10 0">
+                    <ContentControl.Resources>
+                        <Style TargetType="ContentControl">
+                            <Setter Property="Visibility"
+                                    Value="Hidden" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=ActiveUser.ProjectAccess}"
+                                             Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                                    <Setter Property="Visibility"
+                                            Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ContentControl.Resources>
+                </ContentControl>
+            </Grid>
+        </Border>
+        <TabControl Grid.Row="1"
+                    SelectedIndex="{Binding SelectedTabIndex}">
+            <TabItem Header="Project Table">
+                <table:ProjectTableLayoutControl />
+            </TabItem>
+            <TabItem Header="Project Option">
+                <Grid Margin="16">
+                    <controls:ProjectFields></controls:ProjectFields>
+                </Grid>
+                <TabItem.Resources>
+                    <Style TargetType="controls:ProjectFields">
+                        <Setter Property="IsEnabled"
+                                Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Path=ActiveUser.ProjectAccess}"
+                                         Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TabItem.Resources>
+            </TabItem>
+            <TabItem Header="Titles">
+                <local:TitlesList></local:TitlesList>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</helpers:UserControlProjectDependendcy>

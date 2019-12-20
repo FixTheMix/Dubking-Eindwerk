@@ -1,0 +1,213 @@
+﻿<Window x:Class="DubKing.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing"
+        xmlns:control="clr-namespace:DubKing.Controls"
+        xmlns:view="clr-namespace:DubKing.View"
+        xmlns:utils="clr-namespace:DubKing.Utils"
+        mc:Ignorable="d"
+        Title="DubKing 1.0"
+        Height="450"
+        Width="800"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        WindowState="Maximized">
+    <Window.Resources>
+        <utils:UserNameToVisibilityConverter x:Key="userConverter" />
+
+
+    </Window.Resources>
+    <Grid x:Name="MainGrid">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="32" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="32" />
+            <ColumnDefinition Width="32" />
+        </Grid.ColumnDefinitions>
+        <control:LoginControl Grid.RowSpan="3"
+                              Grid.ColumnSpan="8"
+                              Panel.ZIndex="1"
+                              Visibility="{Binding UserName, Converter={StaticResource userConverter}}" />
+        <Button x:Name="btnSettingsBar"
+                
+                HorizontalContentAlignment="Left"
+                Padding="0"
+                Grid.Column="{Binding SettingsBtnPosition.Column}"
+                Grid.Row="{Binding SettingsBtnPosition.Row}"
+                Grid.ColumnSpan="{Binding SettingsBtnPosition.ColumnSpan}"
+                Grid.RowSpan="{Binding SettingsBtnPosition.RowSpan}"
+                Command="{Binding SettingsMenuBarCommand}"
+                Style="{DynamicResource MainNavigationButton}">
+            <WrapPanel>
+                <Viewbox Margin="1">
+                <Control Template="{StaticResource Icons.Settings}" ></Control>
+                </Viewbox>
+                <Label Content="Settings" />
+            </WrapPanel>
+            <Button.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding SettingsBtnPosition.Rotation}" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Button.LayoutTransform>
+        </Button>
+
+        <Button x:Name="btnScheduleBar"
+                Content="Schedule"
+                HorizontalContentAlignment="Left"
+                Padding="20 0"
+                Grid.Column="{Binding ScheduleBtnPosition.Column}"
+                Grid.Row="{Binding ScheduleBtnPosition.Row}"
+                Grid.ColumnSpan="{Binding ScheduleBtnPosition.ColumnSpan}"
+                Grid.RowSpan="{Binding ScheduleBtnPosition.RowSpan}"
+                Command="{Binding ScheduleMenuBarCommand}"
+                Style="{DynamicResource MainNavigationButton}">
+            <Button.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ScheduleBtnPosition.Rotation}" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Button.LayoutTransform>
+        </Button>
+        <Button x:Name="btnVoiceLibraryBar"
+                Content="Voice Library"
+                HorizontalContentAlignment="Left"
+                Padding="20 0"
+                Grid.Column="{Binding VoiceLibraryBtnPosition.Column}"
+                Grid.Row="{Binding VoiceLibraryBtnPosition.Row}"
+                Grid.ColumnSpan="{Binding VoiceLibraryBtnPosition.ColumnSpan}"
+                Grid.RowSpan="{Binding VoiceLibraryBtnPosition.RowSpan}"
+                Command="{Binding VoiceLibraryMenuBarCommand}"
+                Style="{DynamicResource MainNavigationButton}">
+            <Button.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding VoiceLibraryBtnPosition.Rotation}" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Button.LayoutTransform>
+        </Button>
+        <Button x:Name="btnActiveActors"
+                Content="Active Actors"
+                HorizontalContentAlignment="Left"
+                Padding="20 0"
+                Grid.Row="{Binding ActiveActorsBtnPosition.Row}"
+                Grid.RowSpan="{Binding ActiveActorsBtnPosition.RowSpan}"
+                Grid.Column="{Binding ActiveActorsBtnPosition.Column}"
+                Grid.ColumnSpan="{Binding ActiveActorsBtnPosition.ColumnSpan}"
+                Command="{Binding ActiveActorsMenuBarCommand}"
+                Style="{DynamicResource MainNavigationButton}">
+            <Button.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ActiveActorsBtnPosition.Rotation}" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Button.LayoutTransform>
+        </Button>
+        <Button x:Name="btnProjectsBar"
+                Content="Projects"
+                HorizontalContentAlignment="Left"
+                Padding="20 0"
+                Grid.Row="{Binding ProjectBtnPosition.Row}"
+                Grid.RowSpan="{Binding ProjectBtnPosition.RowSpan}"
+                Grid.Column="{Binding ProjectBtnPosition.Column}"
+                Grid.ColumnSpan="{Binding ProjectBtnPosition.ColumnSpan}"
+                Command="{Binding ProjectMenuBarCommand}"
+                Style="{DynamicResource MainNavigationButton}">
+            <Button.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform Angle="{Binding ProjectBtnPosition.Rotation}" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Button.LayoutTransform>
+        </Button>
+        <Grid Grid.ColumnSpan="8"
+              HorizontalAlignment="Right">
+            <Menu Grid.Column="0"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  BorderBrush="Black" BorderThickness=" 0 2 2 2">
+                <Menu.ItemContainerStyle>
+                    <Style TargetType="{x:Type MenuItem}">
+                        <Setter Property="HorizontalContentAlignment"
+                                Value="Left" />
+                        <Setter Property="VerticalContentAlignment"
+                                Value="Center" />
+                        <Setter Property="Background"
+                                Value="White" />
+                    </Style>
+                </Menu.ItemContainerStyle>
+                <Menu.Resources>
+                    
+                    
+
+                </Menu.Resources>
+                <MenuItem Name="btnUser"
+                          Background="White"
+                          HorizontalAlignment="Stretch"
+                          Margin="-7 0 0 0" >
+                    <MenuItem.Header>
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"></ColumnDefinition>
+                                <ColumnDefinition Width="40"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{Binding UserName}"
+                                   Margin="0"
+                                   HorizontalAlignment="Left">
+                            </Label>
+                            <Control Template="{StaticResource Icons.UserAvatar}" Grid.Column="1"
+                                   >
+                            </Control>
+                        </Grid>
+                    </MenuItem.Header>
+                    <MenuItem Header="Logout" Command="{Binding LogoutCommand}"/>
+                </MenuItem>
+                <MenuItem 
+                          Name="MainMenu"
+                          
+                          Background="White"
+                          HorizontalContentAlignment="Center"
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Stretch"
+                          ItemsSource="{Binding BodyContent.DataContext.MainMenu}">
+                    <MenuItem.Header>
+                        <Control Template="{StaticResource Icons.MenuDots}"
+                                Width="28" Margin="4"
+                                />
+                    </MenuItem.Header>
+                    
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <Frame x:Name="frame"
+               Content="{Binding BodyContent}"
+               Grid.Column="{Binding BodyPosition.Column}"
+               Grid.Row="{Binding BodyPosition.Row}"
+               Grid.ColumnSpan="{Binding BodyPosition.ColumnSpan}"
+               Grid.RowSpan="{Binding BodyPosition.RowSpan}"
+               NavigationUIVisibility="Hidden">
+        </Frame>
+    </Grid>
+</Window>

@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="DubKing.Controls.Scenario.ScenarioSearchFields"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.Scenario"
+             mc:Ignorable="d" 
+            >
+    <Border BorderThickness="2" 
+            BorderBrush="LightGray">
+    <Grid Height="Auto" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+            <ComboBox Text="{Binding CharacterSearch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                      ItemsSource="{Binding ProjectCharacters}"
+                     VerticalContentAlignment="Center"
+                     MinWidth="80"
+                     Margin="10"
+                     Height="32"
+                     Grid.Column="0"
+                      IsEditable="True">
+                <ComboBox.InputBindings>
+                    <KeyBinding Key="Return"
+                                Command="{Binding Search}" />
+                </ComboBox.InputBindings>
+            </ComboBox>
+            <TextBox Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                     MinWidth="260"
+                     VerticalContentAlignment="Center"
+                     Margin="10"
+                     Height="32"
+                     Grid.Column="1">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return"
+                                Command="{Binding Search}" />
+                </TextBox.InputBindings>
+            </TextBox>
+            <StackPanel Margin="10" 
+                    Grid.Column="2">
+            <RadioButton Content="Entire Project"
+                         GroupName="searchOption" 
+                         Margin="4" 
+                         IsChecked="{Binding SearchProject, UpdateSourceTrigger=PropertyChanged}"/>
+            <RadioButton Content="Episode"
+                         GroupName="searchOption"
+                         Margin="4"
+                         IsChecked="{Binding SearchEpisode, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+            <Button Grid.Column="3" 
+                    Content="Search" 
+                    Height="32"
+                    Width="80"
+                    Margin="10" 
+                    Command="{Binding Search}"/>
+            <Button Grid.Column="4" 
+                    Content="Cancel Search" 
+                    Height="32"
+                    Width="80"
+                    Margin="10" 
+                    Command="{Binding CancelSearch}"/>
+        </Grid>
+    </Border>
+</UserControl>

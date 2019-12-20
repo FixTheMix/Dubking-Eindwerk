@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="DubKing.Controls.Scenario.KeywordComment.KeywordCommentList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.Scenario.KeywordComment"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" x:Name="keyCommentList">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <ItemsControl Margin="4" ItemsSource="{Binding KeywordComments}"
+                 
+                 HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:KeywordCommentBox Margin="2" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        </ScrollViewer>
+        <Button Content="New"
+                Grid.Row="1" Width="80" HorizontalAlignment="Left" Margin="4" Height="28"
+                Command="{Binding OpenNewKeywordWindow}"
+                CommandParameter="{Binding ElementName=keyCommentList, Path=SelectedText}"/>
+    </Grid>
+</UserControl>

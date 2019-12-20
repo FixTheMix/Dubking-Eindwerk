@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.SearchTableRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <WrapPanel>
+        <TextBox Height="32" 
+                 Width="260"
+                 Margin="10"
+                 Text="{Binding SearchField}"/>
+        <Button  Content="Search"
+                 Height="32"
+                 Width="80"
+                 Command="{Binding FilterRows}" Margin="4"/>
+        <Button Content="Clear"
+                Height="32"
+                Width="80"
+                Command="{Binding ClearSearch}" Margin="4"
+                Visibility="{Binding FilteredTableRows , Converter={StaticResource nullToHidden}}"/>
+    </WrapPanel>
+</UserControl>

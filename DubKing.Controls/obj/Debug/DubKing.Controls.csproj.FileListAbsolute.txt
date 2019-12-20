@@ -1,0 +1,15 @@
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\bin\Debug\DubKing.Controls.dll
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\bin\Debug\DubKing.Controls.pdb
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.csprojAssemblyReference.cache
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls_MarkupCompile.cache
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls_MarkupCompile.lref
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.g.resources
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.Properties.Resources.resources
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.csproj.GenerateResource.cache
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.csproj.CoreCompileInputs.cache
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.dll
+C:\Users\rafae\source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\DubKing.Controls.pdb
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\ActiveActorSortingOptionSelector.g.cs
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\CountDisplayOptionSelector.g.cs
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\ActiveActorSortingOptionSelector.baml
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Controls\obj\Debug\CountDisplayOptionSelector.baml

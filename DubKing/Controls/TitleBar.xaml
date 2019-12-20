@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="DubKing.Controls.TitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DubKing.Controls"
+             xmlns:model="clr-namespace:DubKing.Model;assembly=DubKing.Model"
+             xmlns:spark="clr-namespace:WPFSpark;assembly=WPFSpark"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <Grid>
+        <Border BorderBrush="Black"
+                BorderThickness="2"
+                >
+            <Border.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" />
+            </Border.InputBindings>
+            <Grid Height="auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="32"
+                                      MaxWidth="32" />
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="32" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Button Content="+"
+                        Margin="2"
+                        Command="{Binding ShowDetailsCommand}" />
+                <Button Content="{Binding Object.EpStatus}"
+                        Background="{Binding Object.EpStatus, Converter={StaticResource StatusColor}}"
+                        Command="{Binding RelativeSource={RelativeSource FindAncestor, 
+                AncestorType={x:Type ListBox}}, Path=DataContext.SetStatus}"
+                        CommandParameter="{Binding Object}"
+                        Grid.Column="2"
+                        Width="60"
+                        Margin="6"
+                        Style="{DynamicResource EpisodeStatusButton}" />
+                <Label 
+                           Grid.Column="3"
+                           Margin="4 4 60 0">
+                    <Label.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="Content"
+                                    Value="{Binding Object.CustomCode}" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Object.CustomCodeToggle}"
+                                             Value="false">
+                                    <Setter Property="Content"
+                                            Value="{Binding Object.Number}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Resources>
+                </Label>
+                <Label Content="{Binding Object.Title}"
+                       Grid.Column="4"
+                       Margin="4 4 60 0" />
+                <Label Content="{Binding Object.Translator}"
+                       Grid.Column="5"
+                       Margin="4 4 60 0" />
+
+                <Grid Grid.Row="1"
+                      Grid.ColumnSpan="7"
+                      Visibility="{Binding ShowDetails, Converter={StaticResource showdetails}}">
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.ActiveUser.ProjectAccess}"
+                                             Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                                    <Setter Property="IsEnabled"
+                                            Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+                    <Border Background="#E6E6E6">
+                        <Grid Margin="10 0 10 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label Content="Comment:" />
+                            <TextBox Text="{Binding Object.Comment, Mode=TwoWay}"
+                                     Grid.Row="1"
+                                     Grid.RowSpan="5"
+                                     AcceptsReturn="True"
+                                     Margin="0 0 4 0" />
+                            <Label Content="Title:"
+                                   Grid.Column="1" />
+                            <TextBox Text="{Binding Object.Title, Mode=TwoWay}"
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     Height="32"
+                                     Margin="4 0 0 0" />
+                            <Label Content="Translation"
+                                   Grid.Column="1"
+                                   Grid.Row="2" />
+                            <TextBox Text="{Binding Object.Translator, Mode=TwoWay}"
+                                     Grid.Column="1"
+                                     Grid.Row="3"
+                                     Height="32"
+                                     Margin="4 0 0 0" />
+                            <Label Content="Custom Code"
+                                   Grid.Column="1"
+                                   Grid.Row="4" />
+                            <StackPanel Margin="8"
+                                        Grid.Column="1"
+                                        Grid.Row="5"
+                                        Orientation="Horizontal">
+                                <spark:ToggleSwitch x:Name="toggleCode"
+                                              Margin="4"
+                                                    IsChecked="{Binding Object.CustomCodeToggle}"
+                                              ></spark:ToggleSwitch>
+                                <Label Content="{Binding ElementName=toggleCode, Path=IsChecked}" Margin="4" />
+                                <TextBox IsEnabled="{Binding ElementName=toggleCode, Path=IsChecked}" 
+                                         Width="120"
+                                         Text="{Binding Object.CustomCode}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

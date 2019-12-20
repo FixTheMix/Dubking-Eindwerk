@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.ProjectTableSortingContol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             mc:Ignorable="d" 
+             >
+    <Border BorderBrush="Blue"
+            BorderThickness="1">
+        <StackPanel Margin="4">
+            <StackPanel.Resources>
+
+            </StackPanel.Resources>
+            <Label Content="Sort By"
+                   Margin="4"
+                   Height="32"></Label>
+            <RadioButton 
+                         Content="Character"
+                         IsChecked="{Binding SortBy, Converter={StaticResource SortByConvert}, ConverterParameter=0}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction 
+                                               CommandParameter="Character" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
+            <RadioButton 
+                         Content="Actor"
+                         IsChecked="{Binding SortBy, Converter={StaticResource SortByConvert}, ConverterParameter=1}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked"
+                                    >
+                        <i:InvokeCommandAction 
+                                               CommandParameter="Actor" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
+            <RadioButton 
+                         Content="Quantity"
+                         IsChecked="{Binding SortBy, Converter={StaticResource SortByConvert}, ConverterParameter=2}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Checked">
+                        <i:InvokeCommandAction 
+                                               CommandParameter="Quantity" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </RadioButton>
+        </StackPanel>
+    </Border>
+</UserControl>

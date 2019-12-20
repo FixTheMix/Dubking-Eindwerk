@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.RowHeaderControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable"
+             xmlns:spark="clr-namespace:WPFSpark;assembly=WPFSpark"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:cmd="http://www.galasoft.ch/mvvmlight"
+             xmlns:model="clr-namespace:DubKing.Model;assembly=DubKing.Model"
+             mc:Ignorable="d"
+             Height="60" Width="258"
+             d:DesignHeight="60"
+             d:DesignWidth="260" x:Name="RowHeader">
+    <Border Height="60"
+            
+            BorderThickness="1"
+            BorderBrush="Black"
+            >
+        <Grid>
+            <Grid.Resources>
+
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="168" />
+                <ColumnDefinition Width="60" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Viewbox Margin="2 8"
+                     Grid.RowSpan="2" StretchDirection="DownOnly">
+                <Viewbox.Resources>
+                    <Style TargetType="Viewbox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ActiveUser.ProjectAccess}"
+                                         Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                            </DataTrigger>
+
+                        </Style.Triggers>
+                    </Style>
+                </Viewbox.Resources>
+                <spark:ToggleSwitch HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RenderTransformOrigin="0,1"
+                                    Margin="0 0 0 0"
+                                    IsChecked="{Binding Character.Status }"
+                                    Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.UpdateCharacterCommand}"
+                                    CommandParameter="{Binding Character}">
+                    <spark:ToggleSwitch.LayoutTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="270" />
+                            <TranslateTransform />
+                        </TransformGroup>
+                    </spark:ToggleSwitch.LayoutTransform>
+                </spark:ToggleSwitch>
+            </Viewbox>
+            <Viewbox Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Stretch"
+                     StretchDirection="DownOnly" Cursor="Hand">
+
+                <Viewbox.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick"
+                                  Command="{Binding ElementName=RowHeader, Path=OpenEditCharacter}"
+                                  CommandParameter="{Binding}" />
+                </Viewbox.InputBindings>
+                <TextBlock Text="{Binding Character.Name}"
+                       Style="{StaticResource DisableTextBlock}">
+
+                </TextBlock>
+
+            </Viewbox>
+            <Viewbox Grid.Column="1"
+                     Grid.Row="1"
+                     HorizontalAlignment="Right"
+                     VerticalAlignment="Stretch"
+                     StretchDirection="DownOnly"
+                     Cursor="Hand">
+                <TextBlock HorizontalAlignment="Stretch"
+                       Text="{Binding Character.VoiceTalent, Converter={StaticResource NotAssigned}}"
+                       TextAlignment="Right"
+                       Style="{StaticResource DisableTextBlock}"
+                       VerticalAlignment="Stretch">
+                   
+                </TextBlock>
+                <Viewbox.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick"
+                                  Command="{Binding ElementName=RowHeader, Path=OpenSelectActor}"
+                                  CommandParameter="{Binding}" />
+                </Viewbox.InputBindings>
+            </Viewbox>
+            <TextBlock Grid.Column="2"
+                       Grid.Row="0"
+                       FontWeight="Bold"
+                       Grid.RowSpan="2"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Stretch">
+                <TextBlock.Resources>
+                    <Style TargetType="TextBlock">
+                        
+                            <Setter Property="IsEnabled"
+                                    Value="{Binding Character.Status, UpdateSourceTrigger=PropertyChanged}" />
+                            <Style.Triggers>
+                                <Trigger Property="IsEnabled"
+                                         Value="False">
+                                    <Setter Property="Foreground"
+                                            Value="LightGray" />
+                                    <Setter Property="FontStyle"
+                                            Value="Oblique" />
+                                </Trigger>
+                                <DataTrigger Binding="{Binding ElementName=RowHeader, Path=ProjectTableDataContext.Display, Converter={StaticResource ResourceKey=EnumToInt}}"
+                                         Value="0">
+                                <Setter Property="Text"
+                                        Value="{Binding TotalAvgCount}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding  ElementName=RowHeader, Path=ProjectTableDataContext.Display, Converter={StaticResource ResourceKey=EnumToInt}}"
+                                         Value="1">
+                                <Setter Property="Text"
+                                        Value="{Binding TotalEwlCount}" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=RowHeader, Path=ProjectTableDataContext.Display, Converter={StaticResource ResourceKey=EnumToInt}}"
+                                         Value="2">
+                                <Setter Property="Text"
+                                        Value="{Binding TotalLineCount}" />
+                            </DataTrigger>
+                            
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Resources>
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>

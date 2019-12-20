@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.EditCharacter.RenameCharacter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable.EditCharacter"
+             xmlns:spark="clr-namespace:WPFSpark;assembly=WPFSpark"
+             mc:Ignorable="d" 
+             d:DesignWidth="360">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label Content="New Name:"
+               FontSize="16" Margin="4"/>
+        <ComboBox Margin="4"
+                  Height="32"
+                  IsEditable="True"
+                  Grid.Row="1"
+                  Text="{Binding CharacterCopy.Name, ValidatesOnDataErrors=True}"
+                  VerticalContentAlignment="Center"
+                  ItemsSource="{Binding CharacterNames}"
+                  StaysOpenOnEdit="True"
+                  TextOptions.TextHintingMode="Animated">
+            <!--<ComboBox.ItemTemplate>
+                --><!--<DataTemplate>
+                    <Label Content="{Binding Character.Name}" />
+                </DataTemplate>--><!--
+            </ComboBox.ItemTemplate>-->
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Right" />
+                            <Border BorderBrush="Red"
+                                    BorderThickness="2">
+                                <AdornedElementPlaceholder />
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+            
+        </ComboBox>
+        <CheckBox Content="Mark As Recorded"
+                  Grid.Row="2" 
+                  Margin="4"
+                  IsChecked="{Binding MarkAsRecorded}"/>
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Content="Between Range:" />
+            <Label Content="From:" 
+                   Grid.Column="1"
+                   Visibility="{Binding ElementName=BetweenRange, Path=IsChecked, Converter={StaticResource BoolHidden}}"/>
+            <Label Content="To:" 
+                   Grid.Column="2"
+                   Visibility="{Binding ElementName=BetweenRange, Path=IsChecked, Converter={StaticResource BoolHidden}}"/>
+            <spark:ToggleSwitch Grid.Row="1" Margin="4" x:Name="BetweenRange" IsChecked="{Binding BetweenRange}"></spark:ToggleSwitch>
+            <ComboBox VerticalContentAlignment="Center"
+                      Visibility="{Binding ElementName=BetweenRange, Path=IsChecked, Converter={StaticResource BoolHidden}}"
+                      ItemsSource="{Binding Episodes}"
+                      SelectedItem="{Binding From}"
+                      IsEditable="False"
+                      Margin="4"
+                      Height="32"
+                      Grid.Column="1"
+                      Grid.Row="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Style="{DynamicResource EpisodeSelector}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox VerticalContentAlignment="Center"
+                      Visibility="{Binding ElementName=BetweenRange, Path=IsChecked, Converter={StaticResource BoolHidden}}"
+                      ItemsSource="{Binding Episodes}"
+                      SelectedItem="{Binding To}"
+                      IsEditable="False"
+                      Margin="4"
+                      Height="32"
+                      Grid.Column="2"
+                      Grid.Row="1">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Style="{DynamicResource EpisodeSelector}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+        </Grid>
+        
+    </Grid>
+</UserControl>

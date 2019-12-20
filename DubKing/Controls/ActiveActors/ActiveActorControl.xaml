@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="DubKing.Controls.ActiveActors.ActiveActorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.ActiveActors"
+             xmlns:wi="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+             mc:Ignorable="d" 
+             d:DesignWidth="800"
+             x:Name="ActorItem">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="2" BorderBrush="Black" Height="32" PreviewMouseLeftButtonUp="ShowDetails_Click">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding LineCount.TotalLines}" Grid.Column="1"/>
+                <TextBlock Text="{Binding LineCount.NotRecordedLines}" Grid.Column="2"/>
+
+            </Grid>
+            <wi:Interaction.Triggers>
+                <wi:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                    <wi:InvokeCommandAction 
+                        Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ListBox},AncestorLevel=1}, Path=DataContext.ExpandedCommand}" 
+                        CommandParameter="{Binding ElementName=ActorItem, Path=DataContext}" />
+                </wi:EventTrigger>
+            </wi:Interaction.Triggers>
+        </Border>
+        <ListBox Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Projects}">
+            <ListBox.Style>
+                <Style TargetType="ListBox">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=ActorItem, Path=ShowDetails}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.Style>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}" Height="30" Margin="5"/>
+                    <TextBlock Text="{Binding LineCount.NotRecordedLines}" Height="30" Margin="5"/>
+                    <TextBlock Text="{Binding LineCount.TotalLines}" Height="30" Margin="5"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

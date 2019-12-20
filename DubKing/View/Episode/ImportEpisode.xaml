@@ -1,0 +1,227 @@
+﻿<Window x:Class="DubKing.View.Episode.ImportEpisode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View.Episode"
+        xmlns:spark="clr-namespace:WPFSpark;assembly=WPFSpark"
+        mc:Ignorable="d"
+        Title="ImportEpisode"
+        WindowStyle="None" BorderBrush="Blue" BorderThickness="2"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight" MinWidth="800" MinHeight="450"
+        DataContext="{Binding Source={StaticResource Locator}, Path=ImportEpisode}"
+        WindowStartupLocation="CenterScreen"
+        MaxWidth="800">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Import New Episode:"
+               FontSize="24"
+               Margin="4"/>
+        <Label Grid.Row="1"
+               Content="Select File:"
+               Margin="4" />
+        <TextBox Grid.Row="2"
+                 Grid.ColumnSpan="2" 
+                 Height="32"
+                 Margin="4" Text="{Binding FilePath}"/>
+        <Button Content="..."
+                Margin="4"
+                Grid.Row="2"
+                Grid.Column="2"
+                Width="60" HorizontalAlignment="Left"
+                Command="{Binding BrowsCommand}"/>
+        <Label Content="Title:"
+               Margin="4"
+               Grid.Row="3" />
+        <TextBox Grid.Row="4"
+                 Margin="4"
+                 Height="32"
+                 Text="{Binding Title, ValidatesOnDataErrors=True}"/>
+        <Label Content="Translation:"
+               Margin="4"
+               Grid.Row="3"
+               Grid.Column="1"/>
+        <ComboBox Grid.Row="4"
+                  Margin="4"
+                  Height="32"
+                  Grid.Column="1"
+                  IsEditable="True"
+                  ItemsSource="{Binding Translators}"
+                  Text="{Binding Translation, ValidatesOnDataErrors=True}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Right" />
+                            <Border BorderBrush="Red"
+                                    BorderThickness="2">
+                                <AdornedElementPlaceholder />
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </ComboBox>
+        <Label Content="Episode Number:"
+               Margin="4"
+               Grid.Row="3"
+               Grid.Column="2" />
+        <ComboBox Grid.Row="4"
+                  Margin="4"
+                  Height="32"
+                  Grid.Column="2"
+                  Text="{Binding Number, ValidatesOnDataErrors=True}"
+                  IsEditable="True"
+                  ItemsSource="{Binding AvailableEpNumbers}">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <StackPanel>
+                            <Border BorderBrush="Red"
+                                    BorderThickness="2">
+                                <AdornedElementPlaceholder />
+                            </Border>
+                            <TextBlock Text="{Binding [0].ErrorContent}"
+                                       Foreground="Red"
+                                       HorizontalAlignment="Right" />
+                        </StackPanel>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </ComboBox>
+        <Label Content="Custom Code:"
+               Margin="4"
+               Grid.Row="5" />
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="6"
+                    Grid.ColumnSpan="3">
+            <spark:ToggleSwitch x:Name="CustomCodeToggle"
+                                Margin="4" 
+                                IsChecked="{Binding HasCustomCode}"/>
+            <TextBox IsEnabled="{Binding ElementName=CustomCodeToggle, Path=IsChecked}"
+                     Margin="40 4 4 4"
+                     Height="32"
+                     Width="80" Text="{Binding CustomCode, ValidatesOnDataErrors=True}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="7">
+            <Label Content="Preview"
+                   Margin="4"
+                   Grid.Row="7" />
+            <CheckBox Content="First row contains Headers"
+                      IsChecked="{Binding FirstRowHeader}"
+                      Margin="4"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="8"
+              x:Name="PreviewGrid"
+              Margin="4"
+              MaxHeight="300"
+              MinHeight="200"
+              Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="17"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ComboBox Grid.Column="0"
+                      ItemsSource="{Binding Source={StaticResource importColumns}}"
+                      SelectedItem="{Binding ColumnOne}"></ComboBox>
+            <ComboBox Grid.Column="1"
+                      ItemsSource="{Binding Source={StaticResource importColumns}}"
+                      SelectedItem="{Binding ColumnTwo}"></ComboBox>
+            <ComboBox Grid.Column="2"
+                      ItemsSource="{Binding Source={StaticResource importColumns}}"
+                      SelectedItem="{Binding ColumnTree}"></ComboBox>
+            <Border 
+                    Grid.Column="3" 
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    Background="{DynamicResource Button.Static.Background}" />
+            <ScrollViewer VerticalScrollBarVisibility="Visible" 
+                          Grid.Row="1" 
+                          Grid.ColumnSpan="4" 
+                          HorizontalScrollBarVisibility="Disabled" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ListBox Grid.Column="0"
+                             ItemsSource="{Binding File}"
+                             Style="{StaticResource ListBoxNoScroll}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource firstValue}}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ListBox ItemsSource="{Binding File}"
+                             Grid.Column="1"
+                             Style="{StaticResource ListBoxNoScroll}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource secondValue}}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <ListBox Grid.Column="2"
+                             ItemsSource="{Binding File}"
+                             Style="{StaticResource ListBoxNoScroll}"
+                             >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource thirdValue}}" />
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </ScrollViewer>
+            </Grid>
+        <StackPanel Margin="4 20 4 20" 
+                    HorizontalAlignment="Right"
+                    Grid.Row="9"
+                    Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button Content="Cancel"
+                    IsCancel="True"
+                    Width="96" 
+                    Height="32" 
+                    Margin="0 0 8 0"/>
+            <Button Content="Ok"
+                    IsDefault="True"
+                    Width="96"
+                    Height="32"
+                    Margin="8 0 0 0"
+                    Command="{Binding SaveEpisodeCommand}"/>
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+</Window>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DubKing.Assets">
+    <Viewbox x:Key="Icons.Plus"
+             Stretch="Uniform">
+        <Canvas Name="svg8"
+                Width="100"
+                Height="100">
+            <Canvas.RenderTransform>
+                <TranslateTransform X="0"
+                                    Y="0" />
+            </Canvas.RenderTransform>
+            <Canvas.Resources />
+            <!--Unknown tag: sodipodi:namedview-->
+            <!--Unknown tag: metadata-->
+            <Canvas Name="layer1">
+                <Canvas.RenderTransform>
+                    <TranslateTransform X="-30.994047"
+                                        Y="-53.416664" />
+                </Canvas.RenderTransform>
+                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      Name="rect10"
+                      Fill="#000000"
+                      StrokeThickness="0.99999994">
+                    <Path.Data>
+                        <PathGeometry Figures="M 160.63086 0 L 160.63086 160.63086 L 0 160.63086 L 0 217.32227 L 160.63086 217.32227 L 160.63086 377.95312 L 217.32227 377.95312 L 217.32227 217.32227 L 377.95312 217.32227 L 377.95312 160.63086 L 217.32227 160.63086 L 217.32227 0 L 160.63086 0 z "
+                                      FillRule="NonZero" />
+                    </Path.Data>
+                    <Path.RenderTransform>
+                        <MatrixTransform Matrix="0.26458333 0 0 0.26458333 30.994047 53.416664" />
+                    </Path.RenderTransform>
+                </Path>
+            </Canvas>
+        </Canvas>
+    </Viewbox>
+</ResourceDictionary>

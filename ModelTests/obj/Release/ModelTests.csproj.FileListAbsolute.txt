@@ -1,0 +1,16 @@
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\ModelTests.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\ModelTests.pdb
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\DubKing.Model.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\DubKing.Model.pdb
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\bin\Release\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\obj\Release\ModelTests.csprojAssemblyReference.cache
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\obj\Release\ModelTests.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\obj\Release\ModelTests.csproj.CopyComplete
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\obj\Release\ModelTests.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\ModelTests\obj\Release\ModelTests.pdb

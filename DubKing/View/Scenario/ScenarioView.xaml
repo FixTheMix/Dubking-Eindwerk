@@ -1,0 +1,246 @@
+﻿<Window x:Class="DubKing.View.Scenario.ScenarioView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View.Scenario"
+        xmlns:keyword="clr-namespace:DubKing.Controls.Scenario.KeywordComment"
+        xmlns:controls="clr-namespace:DubKing.Controls.Scenario"
+        xmlns:model="clr-namespace:DubKing.Model;assembly=DubKing.Model"
+        mc:Ignorable="d"
+        x:Name="ScenarioWindow"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        Title="ScenarioView"
+        Height="450"
+        Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Scenario}"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate x:Key="ItemTempate">
+            <controls:LineControl Margin="1"
+                                  IsRecorded="{Binding IsRecorded}"
+                                  CharacterName="{Binding Character.Name}"
+                                  TimeCode="{Binding TimecodeWithOffset}"
+                                  LineText="{Binding Text}"
+                                  SelectedText="{Binding ElementName=ScenarioWindow, Path=SelectedText, Mode=OneWayToSource}"
+                                  x:Name="theItem">
+            </controls:LineControl>
+        </DataTemplate>
+        <DataTemplate x:Key="SelectedTemplate">
+            <Border BorderBrush="Black"
+                    BorderThickness="2">
+                <controls:LineControlSelected Margin="1"
+                                              DataContext="{Binding ElementName=ScenarioListBox, Path=DataContext}"
+                                              SelectedText="{Binding ElementName=ScenarioWindow, Path=SelectedText, Mode=OneWayToSource}">
+
+                </controls:LineControlSelected>
+            </Border>
+        </DataTemplate>
+        <Style TargetType="ListBoxItem"
+               x:Key="ContainerStyle">
+            <Setter Property="ContentTemplate"
+                    Value="{StaticResource ItemTempate}" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected"
+                         Value="True">
+                    <Setter Property="ContentTemplate"
+                            Value="{StaticResource SelectedTemplate}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="controls:LineControlSelected">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled"
+                         Value="false">
+                    <Setter Property="Foreground"
+                            Value="Black"></Setter>
+                </Trigger>
+                <DataTrigger Binding="{Binding ActiveUser.ProjectAccess}"
+                             Value="{x:Static model:ProjectModuleAccess.ReadOnly }">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="controls:LineComment">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled"
+                         Value="false">
+                    <Setter Property="Foreground"
+                            Value="Black"></Setter>
+                </Trigger>
+                <DataTrigger Binding="{Binding ActiveUser.ProjectAccess}"
+                             Value="{x:Static model:ProjectModuleAccess.ReadOnly }">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Border BorderThickness="2"
+            BorderBrush="LightGray">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <controls:ScenarioSearchFields Grid.Row="1" />
+            <Border BorderBrush="Black"
+                    BorderThickness="2"
+                    Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal"
+                            Height="32">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center" />
+                            <Setter Property="FontSize"
+                                    Value="16" />
+                            <Setter Property="Margin"
+                                    Value="2" />
+                            <Setter Property="FontWeight"
+                                    Value="Bold" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Command="{Binding Close}"
+                            Background="White"
+                            BorderThickness="0"
+                            Height="30"
+                            Width="64"
+                            HorizontalAlignment="Left">
+                        <Control Template="{StaticResource Icons.Back_Arrow}" />
+
+                    </Button>
+                    <TextBlock Text="{Binding Episode.Project.Customer}"></TextBlock>
+                    <TextBlock Text=" - "></TextBlock>
+                    <TextBlock Text="{Binding Episode.Project.Title}"></TextBlock>
+                    <TextBlock Text=" - "></TextBlock>
+                    <TextBlock>
+                        <TextBlock.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text"
+                                        Value="{Binding Episode.CustomCode}" />
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center" />
+                                <Setter Property="FontSize"
+                                        Value="16" />
+                                <Setter Property="Margin"
+                                        Value="2" />
+                                <Setter Property="FontWeight"
+                                        Value="Bold" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Episode.CustomCodeToggle}"
+                                                 Value="false">
+                                        <Setter Property="Text"
+                                                Value="{Binding Episode.Number}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Resources>
+                    </TextBlock>
+                    <TextBlock Text=" - "></TextBlock>
+                    <TextBlock Text="{Binding Episode.Title}"></TextBlock>
+                </StackPanel>
+            </Border>
+            <Grid Grid.ColumnSpan="2"
+                  Height="32"
+                  Margin="2"
+                  HorizontalAlignment="Right">
+                <Menu Grid.Column="0"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Stretch"
+                      Margin="1 1 2 0">
+                    <Menu.ItemContainerStyle>
+                        <Style TargetType="{x:Type MenuItem}">
+                            <Setter Property="HorizontalContentAlignment"
+                                    Value="Left" />
+                            <Setter Property="VerticalContentAlignment"
+                                    Value="Center" />
+                            <Setter Property="Background"
+                                    Value="White" />
+                            <Setter Property="BorderThickness"
+                                    Value="0" />
+                        </Style>
+                    </Menu.ItemContainerStyle>
+                    <MenuItem Name="btnUser"
+                              Background="White"
+                              HorizontalAlignment="Stretch"
+                              Margin="-7 0 0 0"
+                              BorderThickness="0">
+                        <MenuItem.Header>
+                            <Grid HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="{Binding ActiveUser.UserName}"
+                                       Margin="0"
+                                       HorizontalAlignment="Left">
+                                </Label>
+                                <Control Template="{StaticResource Icons.UserAvatar}"
+                                         Grid.Column="1">
+                                </Control>
+                            </Grid>
+                        </MenuItem.Header>
+                        <MenuItem Header="Logout"
+                                  Command="{Binding LogOut}" />
+                    </MenuItem>
+                    <MenuItem Name="MainMenu"
+                              Background="White"
+                              HorizontalContentAlignment="Center"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Stretch"
+                              ItemsSource="{Binding MainMenu}">
+                        <MenuItem.Header>
+                            <Control Template="{StaticResource Icons.MenuDots}"
+                                     Width="28"
+                                     Margin="4" />
+                        </MenuItem.Header>
+
+                    </MenuItem>
+                </Menu>
+            </Grid>
+
+
+            <ListBox ItemsSource="{Binding FilteredLines}"
+                     Grid.Row="2"
+                     HorizontalContentAlignment="Stretch"
+                     SelectedItem="{Binding SelectedLine, Mode=TwoWay}"
+                     SelectionChanged="ListBox_SelectionChanged"
+                     ItemContainerStyle="{StaticResource ContainerStyle}"
+                     x:Name="ScenarioListBox">
+            </ListBox>
+
+            <Border Grid.Column="1"
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    BorderBrush="LightGray"
+                    BorderThickness="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <controls:LineComment></controls:LineComment>
+                    <Border Background="Gray"
+                            Height="2"
+                            Grid.Row="1"></Border>
+                    <keyword:KeywordCommentList Grid.Row="2"
+                                                SelectedText="{Binding ElementName=ScenarioWindow, Path=SelectedText, Mode=OneWay}"></keyword:KeywordCommentList>
+
+                </Grid>
+            </Border>
+            <controls:ScenarioButtons Grid.Row="3" />
+        </Grid>
+    </Border>
+
+</Window>

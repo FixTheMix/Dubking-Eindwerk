@@ -1,0 +1,6 @@
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Model\bin\Release\DubKing.Model.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Model\bin\Release\DubKing.Model.pdb
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Model\obj\Release\DubKing.Model.csprojAssemblyReference.cache
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Model\obj\Release\DubKing.Model.csproj.CoreCompileInputs.cache
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Model\obj\Release\DubKing.Model.dll
+C:\Users\rafae\Source\Workspaces\DubKing\DubKing\DubKing.Model\obj\Release\DubKing.Model.pdb

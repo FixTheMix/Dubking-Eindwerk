@@ -1,0 +1,58 @@
+﻿<Window x:Class="DubKing.View.ConfirmDeleteKeywordCommentDialogue"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View"
+        xmlns:keywordcomment="clr-namespace:DubKing.Controls.Scenario.KeywordComment"
+        mc:Ignorable="d"
+        Title="ConfirmDelete"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        BorderBrush="Red"
+        BorderThickness="2"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <StackPanel Margin="10"
+                    HorizontalAlignment="Center">
+            <Label x:Name="Title"
+                   Content="Are You Sure?"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="10"
+                   HorizontalContentAlignment="Center" />
+            <TextBlock x:Name="Message"
+                       Text="You're about to delete this Keyword:"
+                       TextAlignment="Center" />
+            <keywordcomment:KeywordCommentBox Margin=" 40 30 40 0" HideButtons="True"></keywordcomment:KeywordCommentBox>
+            <TextBlock x:Name="Object"
+                       Text="{Binding ObjectName}"
+                       FontWeight="Bold"
+                       TextAlignment="Center"
+                       Margin="10" />
+            <TextBlock x:Name="Message2"
+                       Text="Are you sure you want to continue?"
+                       TextAlignment="Center" />
+            <TextBlock Text="This operation can't be undone!"
+                       TextAlignment="Center" />
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="Cancel"
+                        IsDefault="True"
+                        Width="80"
+                        Height="24"
+                        Margin="30 20 30 20"
+                        IsCancel="True"
+                        Click="OnCancel_Click" />
+                <Button Content="Delete"
+                        Width="80"
+                        Height="24"
+                        Margin="30 20 30 20"
+                        Click="OnDelete_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

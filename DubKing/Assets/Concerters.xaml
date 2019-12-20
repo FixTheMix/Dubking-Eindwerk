@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DubKing.Assets"
+                    xmlns:convert="clr-namespace:DubKing.Converters">
+    <convert:ProjectAccessToStringConverter x:Key="projectAccess" />
+    <convert:MuduleAccessToStringConverter x:Key="moduleAccessConverter" />
+    <convert:SettingAccessToStringConverter x:Key="settingAccess" />
+    <convert:InversedBoolConverter x:Key="inversedBool" />
+    <convert:ShowDetailsConvertor x:Key="showdetails" />
+    <convert:FrameRateStringFormatConverter x:Key="frameRatesConverter"/>
+    <convert:ProjectTypeToStringConverter x:Key="projectTypeConverter" />
+    <convert:ArrayToStringConverter x:Key="arrayToString" />
+    <convert:ArrayFirstValueConverter x:Key="firstValue" />
+    <convert:ArraySecondValueConverter x:Key="secondValue" />
+    <convert:ArrayThirdValueConverter x:Key="thirdValue" />
+    <convert:BoolToVisibilityConverter x:Key="BoolToVisibility" />
+    <convert:BoolToColumnSpanConverter x:Key="BoolToColumnSpan" />
+    <convert:IntDividedByTreeConverter x:Key="IntDivideByTree" />
+    <convert:GenderToStringConverter x:Key="GenderConverter" />
+    <convert:EmptyStringToNotAssignedConverter x:Key="NotAssigned" />
+    <convert:DivideBy4Converter x:Key="DividebyFour" />
+    <convert:BoolToHiddenConverter x:Key="BoolHidden" />
+    <convert:NullToHiddenConverter x:Key="nullToHidden" />
+    <convert:IsRecordedToBackGroundConverter x:Key="IsRecorded" />
+    <convert:ZeroToHiddenConverter x:Key="ZeroLines" />
+    <convert:RecButtonConverter x:Key="recBtn" />
+    <convert:CharacterConverter x:Key="Character" />
+    <convert:EpisodeNumberConverter x:Key="EpisodeNumber" />
+    <convert:TimecodeToStringConverter x:Key="TimecodeToString" />
+    <convert:DeafaultImageConverter x:Key="DefaultImage" />
+    <convert:ToRecToBackgroundConverter x:Key="RecToBackground" />
+    <convert:SortByConverter x:Key="SortByConvert" />
+    <convert:DisplayOptionToBoolConverter x:Key="DisplayConvert" />
+    <convert:EpStatusToColor x:Key="StatusColor" />
+    <convert:GenderToSymbolConverter x:Key="GenderToSymbol" />
+    <convert:EnumToIntConverter x:Key="EnumToInt" />
+    
+
+</ResourceDictionary>

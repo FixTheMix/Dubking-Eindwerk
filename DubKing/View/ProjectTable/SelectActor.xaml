@@ -1,0 +1,58 @@
+﻿<Window x:Class="DubKing.View.ProjectTable.SelectActor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View.ProjectTable"
+        xmlns:voiceLibrary="clr-namespace:DubKing.View.VoiceLibrary"
+        mc:Ignorable="d"
+        Title="SelectActor" Height="750" Width="1000"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" DataContext="{Binding ElementName=VlList, Path=DataContext}"
+        BorderBrush="Blue"
+        BorderThickness="2"
+        
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <voiceLibrary:VoiceLibraryList x:Name="VlList"></voiceLibrary:VoiceLibraryList>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Content="New Voice-Talent"
+                    Height="32"
+                    Width="120"
+                    HorizontalAlignment="Left"
+                    Margin="24 10 10 10"
+                    Command="{Binding NewVoiceTalentCommand}"> </Button>
+            <StackPanel  Grid.Column="1"
+                         Orientation="Horizontal"
+                         FlowDirection="RightToLeft">
+                <Button Content="Select"
+                        Height="32"
+                        Width="120"
+                        Command="{Binding SelectActor}"
+                        HorizontalAlignment="Left"
+                        Margin="24 10 10 10"> </Button>
+                <Button Content="Cancel"
+                        Height="32"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Click="Button_Click"
+                        Margin="24 10 10 10"> </Button>
+                <Button Content="No Actor"
+                        Height="32"
+                        Width="120"
+                        HorizontalAlignment="Left"
+                        Command="{Binding ClearActor}"
+                        Margin="24 10 10 10"> </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

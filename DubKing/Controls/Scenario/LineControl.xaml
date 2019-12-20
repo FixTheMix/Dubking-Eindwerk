@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="DubKing.Controls.Scenario.LineControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.Scenario"
+             xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
+             mc:Ignorable="d" x:Name="lineItem" Margin="4"
+             >
+    <UserControl.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="ShowEp">
+            <Setter Property="Visibility"
+                    Value="Collapsed" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.SearchProject}"
+                             Value="True">
+                    <Setter Property="Visibility"
+                            Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Background="{Binding IsRecorded, Converter={StaticResource IsRecorded}}">
+        <Border.InputBindings>
+            <MouseBinding Gesture="LeftClick"
+                          Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.SelectLine}" />
+        </Border.InputBindings>
+        <Grid Margin="2">
+        <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*" MinWidth="120" />
+            <ColumnDefinition Width="80" />
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Top"
+                       Text="{Binding Episode.CustomCode}"
+                       FontWeight="Bold"
+                       Margin="0 0 10 0"
+                       Style="{DynamicResource ShowEp}">
+            </TextBlock>
+            <TextBlock Text="{Binding ElementName=lineItem, Path=CharacterName}"
+                   VerticalAlignment="Top"
+                   MinHeight="32"
+                   Grid.Column="1"
+                   Margin="1" Background="{Binding RelativeSource={RelativeSource AncestorType=Border}, Path=Background}">
+                <!--<ComboBox.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick"
+                                  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.SelectLine}" />
+                </ComboBox.InputBindings>-->
+        </TextBlock>
+            <TextBlock Text="{Binding ElementName=lineItem, Path=TimeCode}"
+                     Grid.Column="2"
+                       MinHeight="32"
+                     Margin="1"
+                       VerticalAlignment="Top"
+                     >
+                <!--<TextBox.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick"
+                                  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.SelectLine}" />
+                </TextBox.InputBindings>-->
+            </TextBlock>
+        <xceed:RichTextBox Grid.Column="3"
+                           x:Name="rtb"
+                           Text="{Binding ElementName=lineItem, Path=LineText}"
+                           Width="800"
+                           MinHeight="32"
+                           HorizontalContentAlignment="Stretch"
+                           Margin="1"
+                           SelectionChanged="Rtb_SelectionChanged"
+                           VerticalAlignment="Top"
+                           IsReadOnly="True">
+                <!--<xceed:RichTextBox.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick"
+                                  Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}, Path=DataContext.SelectLine}" />
+                </xceed:RichTextBox.InputBindings>-->
+        </xceed:RichTextBox>
+            
+        </Grid>
+    </Border>
+</UserControl>

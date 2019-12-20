@@ -1,0 +1,124 @@
+﻿<Window x:Class="DubKing.View.ProjectTable.EditCharacterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DubKing.View.ProjectTable"
+        xmlns:model="clr-namespace:DubKing.Model;assembly=DubKing.Model"
+        xmlns:controls="clr-namespace:DubKing.Controls.ProjectTable.EditCharacter"
+        mc:Ignorable="d"
+        Title="EditCharacterWindow" Width="600" BorderBrush="Blue" BorderThickness="2"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{Binding Source={StaticResource Locator}, Path=ProjectDetails.ProjectTableViewModel}"
+        SizeToContent="Height">
+    <Window.Resources>
+        <Style TargetType="TabItem" x:Key="Lock">
+            <Setter Property="Visibility"
+                    Value="Visible" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ActiveUser.ProjectAccess}"
+                             Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                    <Setter Property="Visibility"
+                            Value="Hidden" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TabItem" x:Key="ReadOnly">
+            <Setter Property="IsEnabled"
+                    Value="True" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Path=ActiveUser.ProjectAccess}"
+                             Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                    <Setter Property="IsSelected"
+                            Value="True" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock"
+               x:Key="EpisodeSelector">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CustomCodeToggle}"
+                             Value="False">
+                    <Setter Property="Text"
+                            Value="{Binding Number}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding CustomCodeToggle}"
+                             Value="True">
+                    <Setter Property="Text"
+                            Value="{Binding CustomCode}" />
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="10">
+            <TextBlock Text="Edit Character: " FontSize="24"/>
+            <TextBlock Text="{Binding CharacterEdit.Name}"
+                   FontSize="24" />
+        </StackPanel>
+
+        <TabControl Grid.Row="1"
+                    Margin="10"
+                    x:Name="MainTabControl" SelectedIndex="{Binding SelectedTabIndex, Mode=OneWayToSource}">
+            
+            <TabItem Style="{StaticResource Lock}">
+                <TabItem.Header>
+                    <TextBlock Text="Rename"
+                           />
+                </TabItem.Header>
+                <controls:RenameCharacter />
+            </TabItem>
+            <TabItem Style="{StaticResource Lock}">
+                <TabItem.Header>
+                    <TextBlock Text="Duplicate"
+                           />
+                </TabItem.Header>
+                <controls:DuplicateCharacter HorizontalAlignment="Center" />
+            </TabItem>
+            <TabItem Style="{StaticResource Lock}">
+                <TabItem.Header>
+                    <TextBlock Text="Split"
+                           />
+                </TabItem.Header>
+                <controls:SplitCharacter HorizontalAlignment="Center" />
+            </TabItem>
+            <TabItem Style="{StaticResource ReadOnly}" x:Name="CommentTab">
+                <TabItem.Header>
+                    <TextBlock Text="Comment" />
+                </TabItem.Header>
+                <controls:CharacterComment>
+                    <controls:CharacterComment.Resources>
+                        
+                            <Style TargetType="controls:CharacterComment">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=ActiveUser.ProjectAccess}"
+                                                 Value="{x:Static model:ProjectModuleAccess.ReadOnly}">
+                                        <Setter Property="IsEnabled"
+                                                Value="False" />
+
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        
+                    </controls:CharacterComment.Resources>
+                </controls:CharacterComment>
+            </TabItem>
+            
+        </TabControl>
+
+        <StackPanel HorizontalAlignment="Center" Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Cancel" Width="120" Height="32" Margin="10 10 40 10" IsCancel="True"></Button>
+            <Button Content="Ok" Width="120" Height="32" Margin="40 10 10 10" Command="{Binding Excecute}"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

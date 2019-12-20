@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="DubKing.Controls.ProjectTable.EditCharacter.SplitCharacter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DubKing.Controls.ProjectTable.EditCharacter"
+             mc:Ignorable="d" 
+             >
+    <StackPanel Margin="10">
+        <TextBlock Text="Select Seperator:" 
+                   FontSize="24" />
+        <TextBox Height="32"
+                 Width="360"
+                 Margin="4"
+                 Text="{Binding Seperator, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+    </StackPanel>
+</UserControl>

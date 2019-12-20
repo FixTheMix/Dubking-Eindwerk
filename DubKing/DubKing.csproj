@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{39D43E40-6184-4EF2-8668-FFA13036DED4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DubKing</RootNamespace>
+    <AssemblyName>DubKing</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFSpark.1.4.0\lib\net461\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFSpark.1.4.0\lib\net461\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFSpark, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFSpark.1.4.0\lib\net461\WPFSpark.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.MetroAccent, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.Themes.MetroAccent.3.8.19076.18510\lib\net40\Xceed.Wpf.AvalonDock.Themes.MetroAccent.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Office2007, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.Themes.Office2007.3.8.19076.18510\lib\net40\Xceed.Wpf.AvalonDock.Themes.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Windows10, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.AvalonDock.Themes.Windows10.3.8.19076.18510\lib\net40\Xceed.Wpf.AvalonDock.Themes.Windows10.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.DataGrid.Toolkit.3.8.19076.18510\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid.Themes.Metro, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.DataGrid.Themes.Metro.3.8.19076.18510\lib\net40\Xceed.Wpf.DataGrid.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid.Themes.Office2007, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.DataGrid.Themes.Office2007.3.8.19076.18510\lib\net40\Xceed.Wpf.DataGrid.Themes.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid.Themes.Windows10, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.DataGrid.Themes.Windows10.3.8.19076.18510\lib\net40\Xceed.Wpf.DataGrid.Themes.Windows10.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.ListBox, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.ListBox.3.8.19076.18510\lib\net40\Xceed.Wpf.ListBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.ListBox.Themes.LiveExplorer, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.ListBox.Themes.LiveExplorer.3.8.19076.18510\lib\net40\Xceed.Wpf.ListBox.Themes.LiveExplorer.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.ListBox.Themes.Metro, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.ListBox.Themes.Metro.3.8.19076.18510\lib\net40\Xceed.Wpf.ListBox.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.ListBox.Themes.Office2007, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.ListBox.Themes.Office2007.3.8.19076.18510\lib\net40\Xceed.Wpf.ListBox.Themes.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.ListBox.Themes.Windows10, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.ListBox.Themes.Windows10.3.8.19076.18510\lib\net40\Xceed.Wpf.ListBox.Themes.Windows10.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.ListBox.Themes.WMP11, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.ListBox.Themes.WMP11.3.8.19076.18510\lib\net40\Xceed.Wpf.ListBox.Themes.WMP11.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Themes, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Themes.3.8.19076.18510\lib\net40\Xceed.Wpf.Themes.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Themes.Metro, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Themes.Metro.3.8.19076.18510\lib\net40\Xceed.Wpf.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Themes.Office2007, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Themes.Office2007.3.8.19076.18510\lib\net40\Xceed.Wpf.Themes.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Themes.Windows10, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Themes.Windows10.3.8.19076.18510\lib\net40\Xceed.Wpf.Themes.Windows10.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.5.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit.Themes.Metro, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Toolkit.Themes.Metro.3.8.19076.18510\lib\net40\Xceed.Wpf.Toolkit.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit.Themes.Office2007, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Toolkit.Themes.Office2007.3.8.19076.18510\lib\net40\Xceed.Wpf.Toolkit.Themes.Office2007.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit.Themes.Windows10, Version=3.8.19076.18510, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xceed.Wpf.Toolkit.Themes.Windows10.3.8.19076.18510\lib\net40\Xceed.Wpf.Toolkit.Themes.Windows10.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\ActiveActors\ActiveActorControl.xaml.cs">
+      <DependentUpon>ActiveActorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ActiveActors\ActiveActorsListView.xaml.cs">
+      <DependentUpon>ActiveActorsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ColumnHeaderControl.xaml.cs">
+      <DependentUpon>ColumnHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\EditCharacter\CharacterComment.xaml.cs">
+      <DependentUpon>CharacterComment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\EditCharacter\DuplicateCharacter.xaml.cs">
+      <DependentUpon>DuplicateCharacter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\EditCharacter\RenameCharacter.xaml.cs">
+      <DependentUpon>RenameCharacter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\EditCharacter\SplitCharacter.xaml.cs">
+      <DependentUpon>SplitCharacter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\LineCountControl.xaml.cs">
+      <DependentUpon>LineCountControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ProjectTable.xaml.cs">
+      <DependentUpon>ProjectTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ProjectTableDisplayControl.xaml.cs">
+      <DependentUpon>ProjectTableDisplayControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ProjectTableFilters.xaml.cs">
+      <DependentUpon>ProjectTableFilters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ProjectTableLayoutControl.xaml.cs">
+      <DependentUpon>ProjectTableLayoutControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ProjectTableRowControl.xaml.cs">
+      <DependentUpon>ProjectTableRowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\ProjectTableSortingContol.xaml.cs">
+      <DependentUpon>ProjectTableSortingContol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\RowHeaderControl.xaml.cs">
+      <DependentUpon>RowHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\SearchTableRow.xaml.cs">
+      <DependentUpon>SearchTableRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProjectTable\TableColumnFilter.xaml.cs">
+      <DependentUpon>TableColumnFilter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Rating.xaml.cs">
+      <DependentUpon>Rating.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\KeywordComment\KeywordCommentBox.xaml.cs">
+      <DependentUpon>KeywordCommentBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\KeywordComment\KeywordCommentList.xaml.cs">
+      <DependentUpon>KeywordCommentList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\LineComment.xaml.cs">
+      <DependentUpon>LineComment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\LineControlSelected.xaml.cs">
+      <DependentUpon>LineControlSelected.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\LineControl.xaml.cs">
+      <DependentUpon>LineControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\ScenarioButtons.xaml.cs">
+      <DependentUpon>ScenarioButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\ScenarioControl.xaml.cs">
+      <DependentUpon>ScenarioControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scenario\ScenarioSearchFields.xaml.cs">
+      <DependentUpon>ScenarioSearchFields.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BoolToColumnSpanConverter.cs" />
+    <Compile Include="Converters\BoolToHiddenConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\CharacterConverter.cs" />
+    <Compile Include="Converters\DeafaultImageConverter.cs" />
+    <Compile Include="Converters\DisplayOptionToBoolConverter.cs" />
+    <Compile Include="Converters\DivideBy4Converter.cs" />
+    <Compile Include="Converters\EmptyStringToNotAssignedConverter.cs" />
+    <Compile Include="Converters\EnumToIntConverter.cs" />
+    <Compile Include="Converters\EpisodeNumberConverter.cs" />
+    <Compile Include="Converters\EpStatusToColor.cs" />
+    <Compile Include="Converters\GenderToStringConverter.cs" />
+    <Compile Include="Converters\GenderToSymbolConverter.cs" />
+    <Compile Include="Converters\IntDividedByTreeConverter.cs" />
+    <Compile Include="Converters\IsRecordedToBackGroundConverter.cs" />
+    <Compile Include="Converters\NullToHiddenConverter.cs" />
+    <Compile Include="Converters\RecButtonConverter.cs" />
+    <Compile Include="Converters\SortByConverter.cs" />
+    <Compile Include="Converters\TimecodeToStringConverter.cs" />
+    <Compile Include="Converters\ToRecToBackgroundConverter.cs" />
+    <Compile Include="Converters\ZeroToHiddenConverter.cs" />
+    <Compile Include="CustomControls\CheckListBox.cs" />
+    <Compile Include="Helpers\ActiveUserChanged.cs" />
+    <Compile Include="Helpers\CloseNewProjectWindow.cs" />
+    <Compile Include="Controls\ProjectFields.xaml.cs">
+      <DependentUpon>ProjectFields.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TitleBar.xaml.cs">
+      <DependentUpon>TitleBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VoiceTalentFields.xaml.cs">
+      <DependentUpon>VoiceTalentFields.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ArrayFirstValueConverter.cs" />
+    <Compile Include="Converters\ArraySecondValueConverter.cs" />
+    <Compile Include="Converters\ArrayThirdValueConverter.cs" />
+    <Compile Include="Converters\ArrayToStringConverter.cs" />
+    <Compile Include="Converters\FrameRateStringFormatConverter.cs" />
+    <Compile Include="Converters\InversedBoolConverter.cs" />
+    <Compile Include="Converters\MuduleAccessToStringConverter.cs" />
+    <Compile Include="Converters\ProjectAccessToStringConverter.cs" />
+    <Compile Include="Converters\ProjectTypeToStringConverter.cs" />
+    <Compile Include="Converters\SettingAccessToStringConverter.cs" />
+    <Compile Include="Helpers\MessageCloseNewUserWindow.cs" />
+    <Compile Include="Helpers\MessageCloseWindow.cs" />
+    <Compile Include="Helpers\MessageCurrentProject.cs" />
+    <Compile Include="Helpers\MessageOpen.cs" />
+    <Compile Include="Helpers\MessageOpenNewUserWindow.cs" />
+    <Compile Include="Helpers\ObjectSelectedEventArgs.cs" />
+    <Compile Include="Helpers\OpenDetails.cs" />
+    <Compile Include="Helpers\OpenNewProjectWindow.cs" />
+    <Compile Include="Helpers\UserControlProjectDependendcy.cs" />
+    <Compile Include="Messages\AskConfirmationDeleteLine.cs" />
+    <Compile Include="Messages\CloseCalculateOffsetWindow.cs" />
+    <Compile Include="Messages\CloseEditCharacterWindow.cs" />
+    <Compile Include="Messages\CloseNewVoiceTalentWindow.cs" />
+    <Compile Include="Messages\CloseScenarioMessage.cs" />
+    <Compile Include="Messages\CloseSelectActorWindow.cs" />
+    <Compile Include="Messages\ClosingScenarioMessage.cs" />
+    <Compile Include="Messages\ConfirmDeleteMessage.cs" />
+    <Compile Include="Messages\ConfirmGlossaryKeywordDeleteMessage.cs" />
+    <Compile Include="Messages\DeleteKeywordMessage.cs" />
+    <Compile Include="Messages\EpisodeAdded.cs" />
+    <Compile Include="Messages\FilterColumnsMessage.cs" />
+    <Compile Include="Messages\LoadActiveActorsMessage.cs" />
+    <Compile Include="Messages\LoadScenarioMessage.cs" />
+    <Compile Include="Messages\LogOutMessage.cs" />
+    <Compile Include="Messages\NewKeywordMessage.cs" />
+    <Compile Include="Messages\OpenCalculateOffsetWindow.cs" />
+    <Compile Include="Messages\OpenEditCharacterWindow.cs" />
+    <Compile Include="Messages\OpenImportEpisodeWindow.cs" />
+    <Compile Include="Messages\OpenNewKeywordMessage.cs" />
+    <Compile Include="Messages\OpenNewVoiceTalentWindow.cs" />
+    <Compile Include="Messages\OpenScenarioWindow.cs" />
+    <Compile Include="Messages\OpenSelectActorWindow.cs" />
+    <Compile Include="Messages\RedrawTable.cs" />
+    <Compile Include="Messages\ReloadTableMessage.cs" />
+    <Compile Include="Messages\SelectActor.cs" />
+    <Compile Include="Messages\ProjectTableAddEpisode.cs" />
+    <Compile Include="Messages\SendCharacterToEdit.cs" />
+    <Compile Include="Messages\SetCurrentProject.cs" />
+    <Compile Include="Utils\UserCheck.cs" />
+    <Compile Include="Utils\UserNameToVisibilityConverter.cs" />
+    <Compile Include="Converters\ShowDetailsConvertor.cs" />
+    <Compile Include="ViewModel\ActiveActors\ActiveActorsViewModel.cs" />
+    <Compile Include="ViewModel\ActiveActors\VoiceTalentViewModel.cs" />
+    <Compile Include="ViewModel\BarViewModel.cs" />
+    <Compile Include="ViewModel\EpisodeView\ImportEpisodeViewModel.cs" />
+    <Compile Include="ViewModel\NewProjectViewModel.cs" />
+    <Compile Include="ViewModel\ProjectDetailsViewModel.cs" />
+    <Compile Include="ViewModel\ProjectListViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTable\EditCharacterViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTable\LineCountViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTable\ProjectTableViewModel.cs" />
+    <Compile Include="ViewModel\ProjectTable\TableRowViewModel.cs" />
+    <Compile Include="ViewModel\Scenario\ScenarioViewModel.cs" />
+    <Compile Include="ViewModel\UserListViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModels\NewUserViewModel.cs" />
+    <Compile Include="ViewModel\VoiceLibraryListViewModel.cs" />
+    <Compile Include="ViewModel\VoiceLibrary\NewVoiceTalentViewModel.cs" />
+    <Compile Include="View\ConfirmDelete.xaml.cs">
+      <DependentUpon>ConfirmDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfirmDeleteKeywordCommentDialogue.xaml.cs">
+      <DependentUpon>ConfirmDeleteKeywordCommentDialogue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Episode\ImportEpisode.xaml.cs">
+      <DependentUpon>ImportEpisode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ErrorMessageDialog.xaml.cs">
+      <DependentUpon>ErrorMessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewProject.xaml.cs">
+      <DependentUpon>NewProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewUser.xaml.cs">
+      <DependentUpon>NewUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DubKingProgess.xaml.cs">
+      <DependentUpon>DubKingProgess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProjectBar.xaml.cs">
+      <DependentUpon>ProjectBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProjectDetails.xaml.cs">
+      <DependentUpon>ProjectDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProjectsListView.xaml.cs">
+      <DependentUpon>ProjectsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProjectTable\EditCharacterWindow.xaml.cs">
+      <DependentUpon>EditCharacterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProjectTable\SelectActor.xaml.cs">
+      <DependentUpon>SelectActor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Scenario\CalculateOffsetWindow.xaml.cs">
+      <DependentUpon>CalculateOffsetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Scenario\KeywordComment\NewKeywordCommentwindow.xaml.cs">
+      <DependentUpon>NewKeywordCommentwindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Scenario\ScenarioView.xaml.cs">
+      <DependentUpon>ScenarioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TitlesList.xaml.cs">
+      <DependentUpon>TitlesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserBar.xaml.cs">
+      <DependentUpon>UserBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VoiceLibrary\Keywords\DeleteKeywordWindow.xaml.cs">
+      <DependentUpon>DeleteKeywordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VoiceLibrary\Keywords\NewKeywordWindow.xaml.cs">
+      <DependentUpon>NewKeywordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VoiceLibrary\VoiceLibraryList.xaml.cs">
+      <DependentUpon>VoiceLibraryList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VoiceLibrary\NewVoiceTalent.xaml.cs">
+      <DependentUpon>NewVoiceTalent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\VoiceLibrary\VoiceTalentBar.xaml.cs">
+      <DependentUpon>VoiceTalentBar.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Assets\CloseX.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\ColorDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Concerters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Enums.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Lock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Min.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Assets\Plus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ActiveActors\ActiveActorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ActiveActors\ActiveActorsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoginControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectFields.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProjectTable\ColumnHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\EditCharacter\CharacterComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\EditCharacter\DuplicateCharacter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\EditCharacter\RenameCharacter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\EditCharacter\SplitCharacter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\LineCountControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\ProjectTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\ProjectTableDisplayControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\ProjectTableFilters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\ProjectTableLayoutControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\ProjectTableRowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\ProjectTableSortingContol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\RowHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\SearchTableRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ProjectTable\TableColumnFilter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Rating.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\KeywordComment\KeywordCommentBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\KeywordComment\KeywordCommentList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\LineComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\LineControlSelected.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Scenario\LineControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\ScenarioButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\ScenarioControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scenario\ScenarioSearchFields.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TitleBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VoiceTalentFields.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ConfirmDelete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ConfirmDeleteKeywordCommentDialogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Episode\ImportEpisode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ErrorMessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\LoginControl.xaml.cs">
+      <DependentUpon>LoginControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\GridPosition.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\NewProject.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DubKingProgess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProjectBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ProjectDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProjectsListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ProjectTable\EditCharacterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProjectTable\SelectActor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Scenario\CalculateOffsetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Scenario\KeywordComment\NewKeywordCommentwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Scenario\ScenarioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TitlesList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\VoiceLibrary\Keywords\DeleteKeywordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VoiceLibrary\Keywords\NewKeywordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VoiceLibrary\VoiceLibraryList.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\VoiceLibrary\NewVoiceTalent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\VoiceLibrary\VoiceTalentBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DubKing.Controls\DubKing.Controls.csproj">
+      <Project>{85d7b2d2-2b77-47a5-a672-554653c4d65c}</Project>
+      <Name>DubKing.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DubKing.Model\DubKing.Model.csproj">
+      <Project>{598901ae-4666-48ba-9ddf-9ff6b6aa4e1b}</Project>
+      <Name>DubKing.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DubKing.Services\DubKing.Services.csproj">
+      <Project>{09597e9a-3665-4e6f-a7c7-40674e26e705}</Project>
+      <Name>DubKing.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AvatarDing.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AvatarDing.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\VoiceLibrary\Keywords\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Drop_Photo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

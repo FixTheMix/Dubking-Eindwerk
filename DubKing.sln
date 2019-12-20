@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DubKing", "DubKing\DubKing.csproj", "{39D43E40-6184-4EF2-8668-FFA13036DED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DubKing.Model", "DubKing.Model\DubKing.Model.csproj", "{598901AE-4666-48BA-9DDF-9FF6B6AA4E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DubKing.Services", "DubKing.Services\DubKing.Services.csproj", "{09597E9A-3665-4E6F-A7C7-40674E26E705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DubKing.Repositories", "DubKing.Repositories\DubKing.Repositories.csproj", "{4EBC909B-02CB-4C59-BA7F-F8480803D4A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelTests", "ModelTests\ModelTests.csproj", "{9D9402D4-1E30-49AD-9EE0-3EA07F0D2BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DialogueService", "DialogueService\DialogueService.csproj", "{F64C2075-ECC6-42B0-AFAD-701579770998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DubKing.Controls", "DubKing.Controls\DubKing.Controls.csproj", "{85D7B2D2-2B77-47A5-A672-554653C4D65C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39D43E40-6184-4EF2-8668-FFA13036DED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39D43E40-6184-4EF2-8668-FFA13036DED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39D43E40-6184-4EF2-8668-FFA13036DED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39D43E40-6184-4EF2-8668-FFA13036DED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{598901AE-4666-48BA-9DDF-9FF6B6AA4E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{598901AE-4666-48BA-9DDF-9FF6B6AA4E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{598901AE-4666-48BA-9DDF-9FF6B6AA4E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{598901AE-4666-48BA-9DDF-9FF6B6AA4E1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09597E9A-3665-4E6F-A7C7-40674E26E705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09597E9A-3665-4E6F-A7C7-40674E26E705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09597E9A-3665-4E6F-A7C7-40674E26E705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09597E9A-3665-4E6F-A7C7-40674E26E705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EBC909B-02CB-4C59-BA7F-F8480803D4A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EBC909B-02CB-4C59-BA7F-F8480803D4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EBC909B-02CB-4C59-BA7F-F8480803D4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EBC909B-02CB-4C59-BA7F-F8480803D4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D9402D4-1E30-49AD-9EE0-3EA07F0D2BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D9402D4-1E30-49AD-9EE0-3EA07F0D2BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D9402D4-1E30-49AD-9EE0-3EA07F0D2BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D9402D4-1E30-49AD-9EE0-3EA07F0D2BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64C2075-ECC6-42B0-AFAD-701579770998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64C2075-ECC6-42B0-AFAD-701579770998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64C2075-ECC6-42B0-AFAD-701579770998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64C2075-ECC6-42B0-AFAD-701579770998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85D7B2D2-2B77-47A5-A672-554653C4D65C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85D7B2D2-2B77-47A5-A672-554653C4D65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85D7B2D2-2B77-47A5-A672-554653C4D65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85D7B2D2-2B77-47A5-A672-554653C4D65C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E4B2873-674B-4F61-83C2-F2D19CEB7D11}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/raf0322
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = DubKing.Model\\DubKing.Model.csproj
+		SccProjectName1 = DubKing.Model
+		SccLocalPath1 = DubKing.Model
+		SccProjectUniqueName2 = DubKing.Repositories\\DubKing.Repositories.csproj
+		SccProjectName2 = DubKing.Repositories
+		SccLocalPath2 = DubKing.Repositories
+		SccProjectUniqueName3 = DubKing.Services\\DubKing.Services.csproj
+		SccProjectName3 = DubKing.Services
+		SccLocalPath3 = DubKing.Services
+		SccProjectUniqueName4 = DubKing\\DubKing.csproj
+		SccProjectName4 = DubKing
+		SccLocalPath4 = DubKing
+		SccProjectUniqueName5 = ModelTests\\ModelTests.csproj
+		SccProjectName5 = ModelTests
+		SccLocalPath5 = ModelTests
+		SccProjectUniqueName6 = DialogueService\\DialogueService.csproj
+		SccProjectName6 = DialogueService
+		SccLocalPath6 = DialogueService
+		SccProjectUniqueName7 = DubKing.Controls\\DubKing.Controls.csproj
+		SccProjectName7 = DubKing.Controls
+		SccLocalPath7 = DubKing.Controls
+	EndGlobalSection
+EndGlobal
